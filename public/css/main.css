@@ -1,0 +1,291 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --color-1: #ff8b00;
+}
+
+body {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  background-color: rgb(240, 240, 240);
+  overflow-x: hidden;
+  font-size: 1.2rem;
+}
+
+body h2 {
+  font-weight: 700;
+  font-size: 35px;
+}
+
+body img.google-play {
+  width: 200px;
+  height: auto;
+  filter: drop-shadow(0 5px 3px rgba(0,0,0,0.6));
+  transform: translateY(-3px);
+  transition: 200ms;
+}
+
+body img.google-play:hover {
+  box-shadow: none;
+  transform: translateY(0);
+  filter: drop-shadow(0 0 0);
+}
+
+body .section {
+  margin: 70px 0;
+}
+
+.section-1 .section-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.section-1 .section-content .card {
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: none;
+  box-shadow: 0 5px 8px rgba(0,0,0,0.2);
+  width: 200px;
+  height: 280px;
+}
+
+.section-1 .section-content
+.card .card-body {
+  display: grid;
+  place-items: center;
+}
+
+.section-1 .section-content
+.card .card-body .image {
+  width: 150px;
+  height: 150px;
+  border-radius: 150px;
+  display: grid;
+  place-items: center;
+}
+
+.section-1 .section-content
+.card .card-body .image img {
+  width: 80px;
+  height: auto;
+}
+
+.section-1 .section-content
+.card .card-footer {
+  background-color: white;
+}
+
+.section-1 .section-content
+.card .card-footer h3 {
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--color-1);
+}
+
+.section-1 .section-content
+.card:nth-child(2) .image img,
+.section-1 .section-content
+.card:nth-child(4) .image img {
+ height: 90px;
+ width: auto;
+}
+
+.section-2 .section-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.section-2 .section-content
+.card {
+  width: 250px;
+  height: 380px;
+  padding: 15px 0;
+  border: none;
+  box-shadow: 0 5px 8px rgba(0,0,0,0.2);
+  margin: 10px;
+}
+
+.section-2 .section-content
+.card .card-footer {
+  background-color: white;
+}
+
+.section-2 .section-content
+.card .card-footer h3 a {
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--color-1);
+}
+
+.section-2 .section-content
+.card .card-footer a {
+  text-decoration: none;
+  color: black;
+  font-size: 1rem;
+}
+
+.section-2 .section-content
+.card .card-footer a:hover {
+  color: var(--color-1);
+}
+
+.section-2 .section-content .card
+.card-body {
+  overflow: hidden;
+  margin-bottom: 10px;
+  background-color: white;
+}
+
+.section-2 .section-content .card
+.image {
+  overflow: hidden;
+  margin-bottom: 5px;
+}
+
+.section-2 .section-content .card
+.image img {
+  height: 100%;
+  width: 100%;
+}
+
+.section-4 .raw {
+  display: flex;
+}
+
+.section-4 .raw .promotion-tagline {
+  transform: translate(10%, 20%); 
+}
+
+.section-4 .raw .promotion-tagline h2 {
+  font-size: 60px;
+  font-weight: 800;
+}
+
+
+.section-4 .download .fw-semibold {
+    font-size: 20px;
+}
+
+
+.section-5 .social-media a {
+  display: grid;
+  place-items: center;
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+  border-radius: 50px;
+  background-color: #ff8b00;
+  box-shadow: 0 3px 3px rgba(0,0,0,0.3);
+  transition: .2s;
+}
+
+.section-5
+.social-media a:hover {
+  transform: translateY(-10%);
+  box-shadow: 0 6px 8px rgba(0,0,0,0.2);
+}
+
+.section-5 .social-media a i {
+  font-size: 20px;
+  color: white;
+}
+
+.section-6 .section-content .raw {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.section-6 .section-content
+.raw .col-lg-6 {
+  display: flex;
+  padding: 30px;
+}
+
+.section-6 .section-content
+.raw .col-lg-6 .image {
+  width: 300px;
+  margin: 20px;
+}
+
+.section-6 .section-content
+.raw .col-lg-6 .image img {
+  height: auto;
+  width: 100%;
+}
+
+.section-6 .section-content 
+.text .title p {
+  font-size: 1rem;
+}
+
+
+@media screen and (max-width: 992px) 
+{ 
+  .section-4 .raw {
+    display: flex;
+  }
+
+  .section-4 .raw .promotion-tagline {
+    transform: translate(0); 
+  }
+
+  .section-4 .image img {
+    height: 280px;
+    width: auto;
+  }
+
+  .section-4 .raw .promotion-tagline h2 {
+    font-size: 40px;
+  }
+
+  .section-4 .raw:nth-child(1) {
+    margin-bottom: 50px;
+  }
+
+  .section-6 .section-content
+  .raw .col-lg-6 .image {
+    width: 70%;
+    margin: 10px;
+  }
+
+}
+
+@media screen and (max-width: 578px) 
+{
+  .section-4 .raw .col-lg-6 button a{
+    font-size: 15px;
+  }
+
+  .section-4 .download .fw-semibold {
+    font-size: 14px;
+  }
+
+  .section-4 .raw {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .section-4 .raw .col-lg-6 h2 {
+    font-size: 25px;
+  }
+
+  .section-4 .raw .col-lg-6 .image {
+    width: 90%;
+  }
+
+  .section-4 .raw .col-lg-6 img {
+    width: 100%;
+    height: auto;
+  }
+
+  .section-4 .raw .col-lg-6 img.google-play {
+    width: 120px;
+  }
+}

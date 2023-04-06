@@ -1,0 +1,238 @@
+.hero {
+  padding-bottom: 40px;
+}
+
+.hero nav .toggle {
+  display: none;
+}
+
+.hero nav .navbar {
+  display: flex;
+  justify-content: space-between;
+}
+
+.hero nav .navbar .navbar-logo {
+  height: 40px;
+}
+
+.hero nav .navbar .navbar-logo img{
+  height: 100%;
+  width: auto;
+}
+
+.hero nav .navbar .nav-item {
+  display: flex;
+}
+
+.hero nav .navbar .nav-item
+.nav-link a {
+  text-decoration: none;
+  color: black;
+}
+
+.hero nav .navbar .nav-item
+.nav-link {
+  margin: 15px;
+}
+
+.hero nav .navbar .nav-item
+.nav-link a:hover {
+  color: rgb(121, 93, 3);
+}
+
+.hero nav .navbar .auth {
+  display: flex;
+  align-items: center;
+}
+
+.hero nav .navbar .auth div {
+  margin: 10px;
+}
+
+.hero nav .navbar .auth a {
+  text-decoration: none;
+  color: black;
+}
+
+.hero nav .navbar .auth a:hover {
+  color: rgb(121, 93, 3);
+}
+
+.hero nav .navbar .auth div i {
+  font-size: 35px;
+}
+
+.hero .header .container .raw {
+  display: flex;
+  flex-wrap: wrap-reverse;
+}
+
+.hero .header .col-lg-6:nth-child(1) {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.hero .header .title h1 {
+  color: black;
+  font-weight: 800;
+}
+
+.hero .header .title .social-media a {
+  display: grid;
+  place-items: center;
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+  border-radius: 50px;
+  background-color: #ff8b00;
+  box-shadow: 0 3px 3px rgba(0,0,0,0.3);
+  transition: .2s;
+}
+
+.hero .header .title
+.social-media a:hover {
+  transform: translateY(-10%);
+  box-shadow: 0 6px 8px rgba(0,0,0,0.2);
+}
+
+.hero .header .title .social-media a i {
+  font-size: 20px;
+  color: white;
+}
+
+.hero .header .container .raw .header-image {
+  display: flex;
+  justify-content: center;
+}
+
+.hero .header .container .raw .header-image img {
+  height: 70%;
+  width: auto;
+}
+
+
+@media screen and (max-width:992px)
+{
+  .hero .header {
+    padding-top: 30px;
+  }
+
+  .hero nav .toggle {
+    display: flex;
+    position: absolute;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 28px;
+    width: 35px;
+    z-index: 99999 !important;
+    right: 30px;
+    top: 30px;
+  }
+
+  .hero nav .toggle span {
+    display: block;
+    background-color: var(--color-1);
+    box-shadow: 1px 1px 1px rgba(0,0,0,0.5);
+    height: 5px;
+    width: 100%;
+    border-radius: 3px;
+    transition: all .3s ease;
+  }
+
+  .hero nav .toggle span:nth-child(1) {
+    transform-origin: 0 0;
+  }
+  .hero nav .toggle span:nth-child(3) {
+    transform-origin: 0 100%;
+  }
+
+  .hero nav .toggle.this-toggle span {
+    background-color: white;
+  }
+
+  .hero nav .toggle.this-toggle span:nth-child(1) {
+    transform: rotate(45deg);
+  }
+  .hero nav .toggle.this-toggle span:nth-child(2) {
+    transform: scale(0);
+  }
+  .hero nav .toggle.this-toggle span:nth-child(3) {
+    transform: rotate(-45deg);
+  }
+
+  .hero nav .navbar {
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    z-index: 9999;
+    background-color: rgba(0,0,0,0.5);
+    backdrop-filter: blur(5px);
+    transition: all .3s ease-in-out;
+    transform: translateY(-100%);
+  }
+
+  .hero nav .navbar.this-navbar {
+    transform: translateX(0);
+  }
+
+  .hero nav .navbar .navbar-logo {
+    margin-bottom: 20px;
+  }
+
+  .hero nav .navbar .navbar-logo img {
+    height: 70px;
+    width: auto;
+  }
+
+  .hero nav .navbar .nav-item {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .hero nav .navbar .nav-item .nav-link {
+    padding: 10px;
+  }
+
+  .hero nav .navbar .nav-item .nav-link a {
+    color: white;
+  }
+
+  .hero nav .navbar .nav-item .nav-link:hover {
+    background-color: rgba(0,0,0,0.6);
+  }
+
+  .hero nav .navbar .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .hero nav .navbar .auth a {
+    color: white;
+  }
+
+  .hero .header .container .raw {
+    flex-wrap: wrap-reverse;
+  }
+
+  .hero .header .container .raw .col-lg-6:nth-child(1) {
+    margin: 30px;
+  }
+
+  .hero .header .container .raw
+  .col-lg-6:nth-child(1) .title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .hero .header .container .raw
+  .col-lg-6:nth-child(2) .header-image img {
+    width: 50%;
+    height: auto;
+  }
+}
