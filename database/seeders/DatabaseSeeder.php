@@ -8,7 +8,9 @@ use App\Models\Carrier;
 use App\Models\Link;
 use App\Models\Feature;
 use App\Models\Category;
+use App\Models\KritikSaran;
 use App\Models\Privacy;
+use App\Models\TermsCondition;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -103,9 +105,23 @@ class DatabaseSeeder extends Seeder
         ]);
 
 
-        /* ========== LINK ========== */
+        /* ========== PAGES ========== */
         Privacy::create([
             'title'         => 'Privacy',
+            'slug'          => 'privacy',
+            'description'   => 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quae, ex nobis beatae commodi libero corporis natus, tempore quas laboriosam nisi deleniti officia animi perspiciatis explicabo.'
+        ]);
+
+        KritikSaran::create([
+            'name'      => 'Budi Gunawan',
+            'email'     => 'budigunawan@gmail.com',
+            'phone'     => '081234567890',
+            'message'   => 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quae, ex nobis beatae commodi libero corporis natus, tempore quas laboriosam nisi deleniti officia animi perspiciatis explicabo.'
+        ]);
+
+        TermsCondition::create([
+            'title'         => 'Terms & Condition',
+            'slug'          => 'terms-&-condition',
             'description'   => 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quae, ex nobis beatae commodi libero corporis natus, tempore quas laboriosam nisi deleniti officia animi perspiciatis explicabo.'
         ]);
 

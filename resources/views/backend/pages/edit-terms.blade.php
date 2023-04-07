@@ -5,17 +5,22 @@
     <h1 class="text-uppercase">{{ $title }}</h1>
   </div>
 
-  @if(session()->has('update-link'))
-  <div class="alert alert-warning alert-dismissible fade show bg-warning text-white border-0" role="alert" data-bs-theme="dark">
-    {{ session('update-link') }}
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-  </div>
-  @endif
+  <a href="/pages" class="btn btn-outline-dark mb-3">< Back</a>
 
   <div class="raw d-flex">
     <div class="col-lg-8">
       <div class="tab">
-        
+        <h4>{{ $terms->title }}</h4>
+        <form action="/pages/terms/update/{{ $terms->id }}" method="post">
+          @method('put')
+          @csrf
+
+          <div class="my-3">
+            <label for="summernote" class="form-label">Deskripsi</label>
+            <textarea name="description" id="summernote">{{ $terms->description, old('description') }}</textarea>
+          </div>
+          <button class="btn btn-primary">Save</button>
+        </form>
       </div>
     </div>
   </div>

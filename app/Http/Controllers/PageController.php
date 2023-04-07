@@ -13,33 +13,51 @@ class PageController extends Controller
     {
         return view('backend.pages.pages', [
             'title'             => 'Pages',
-            'termsconditions'   => TermsCondition::all(),
+            'termscondition'    => TermsCondition::all(),
             'privacies'         => Privacy::all(),
             'kritiksaran'       => KritikSaran::all()
         ]);
     }
 
-    public function getTerms ()
+    public function getTerms (TermsCondition $terms)
     {
         return view('backend.pages.edit-terms', [
-            'title'     => 'Edit Terms & Condition',
-            'terms'     => TermsCondition::all()
+            'title' => 'Edit Terms & Condition',
+            'terms' => $terms
         ]);
     }
 
-    public function getPrivacy ()
+    public function updateTerms (Request $request, TermsCondition $terms)
+    {
+        $validation = $request->validate([
+            'title'         => '',
+            'slug'          => '',
+            'description'   => ''
+        ]);
+
+        TermsCondition::where('id', $terms->id)->update($validation);
+
+        return redirect('/pages')->with('update-terms', 'Data berhasil diubah');
+    }
+
+    public function getPrivacy (Privacy $privacy)
     {
         return view('backend.pages.edit-privacy', [
             'title'     => 'Edit Privacy',
-            'terms'     => Privacy::all()
+            'privacy'   => $privacy
         ]);
     }
 
-    public function getKritikSaran ()
+    public function updatePrivacy (Request $request, Privacy $privacy)
     {
-        return view('backend.pages.edit-kritiksaran', [
-            'title'     => 'Edit Kritik Saran',
-            'terms'     => KritikSaran::all()
+        $validation = $request->validate([
+            'title'         => '',
+            'slug'          => '',
+            'description'   => ''
         ]);
+
+        Privacy::where('id', $privacy->id)->update($validation);
+
+        return redirect('/pages')->with('update-privacy', 'Data berhasil diubah');
     }
 }

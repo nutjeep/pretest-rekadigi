@@ -25,26 +25,31 @@ Route::controller(AuthController::class)->group(function(){
 Route::controller(DashboardController::class)->group(function(){
     Route::get('/dashboard', 'index');
 
+    Route::post('/dashboard/add/feature', 'storeFeature');
+    Route::put('/dashboard/update/feature/{feature:slug}', 'updateFeature');
+    Route::delete('/dashboard/delete/{feature:slug}', 'deleteFeature');
+
     Route::get('/dashboard/category/add', 'addCategory');
     Route::post('/dashboard/category/store', 'storeCategory');
     Route::get('/dashboard/category/edit/{category:slug}', 'editCategory');
     Route::put('/dashboard/category/update/{category:slug}', 'updateCategory');
     Route::delete('/dashboard/category/delete/{category:id}', 'deleteCategory');
 
-    Route::post('/dashboard/add/feature', 'storeFeature');
-    Route::put('/dashboard/update/feature/{feature:slug}', 'updateFeature');
-    Route::delete('/dashboard/delete/{feature:slug}', 'deleteFeature');
+    Route::get('/dashboard/carrier/add', 'addCarrier');
+    Route::post('/dashboard/carrier/store', 'storeCarrier');
+    Route::get('/dashboard/carrier/edit/{carrier:slug}', 'editCarrier');
+    Route::put('/dashboard/carrier/update/{carrier:slug}', 'updateCarrier');
+    Route::delete('/dashboard/carrier/delete/{carrier:id}', 'deleteCarrier');
 
-    Route::put('/dashboard/update_link/{link:id}', 'updateLink');
+    Route::put('/dashboard/link/update/{link:id}', 'updateLink');
 });
 
 Route::controller(PageController::class)->group(function(){
     Route::get('/pages', 'index');
-    Route::get('/pages/edit/terms', 'getTerms');
-    Route::get('/pages/edit/privacy', 'getPrivacy');
-    Route::get('/pages/edit/kritik-saran', 'getKritikSaran');
 
-    Route::put('/pages/terms/update/{termscondition:id}');
-    Route::put('/pages/privacy/update/{privacy:id}');
-    Route::put('/pages/kritik-saran/update/{kritiksaran:id}');
+    Route::get('/pages/terms/edit/{terms:id}', 'getTerms');
+    Route::get('/pages/privacy/edit/{privacy:id}', 'getPrivacy');
+
+    Route::put('/pages/terms/update/{terms:id}', 'updateTerms');
+    Route::put('/pages/privacy/update/{privacy:id}', 'updatePrivacy');
 });
