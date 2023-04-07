@@ -2,7 +2,7 @@
 
 Proyek ini digunakan untuk pretest proses seleksi tim Laravel Developer di PT DAYA REKADIGITAL INDONESIA
 
-Keteerangan : 
+Keterangan : 
 - Tech Stack  : Laravel v10.0
 - PHP         : PHP 8.1
 - DB name     : pretest-rekadigi
@@ -38,4 +38,6 @@ Tulungagung, 07 April 2023
 
 
 Muhammad Najib 'Abdulloh
+<br>
+<br>
 anajibmuhammad@gmail.com
