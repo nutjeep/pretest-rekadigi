@@ -1,6 +1,6 @@
 ## Dokumentasi
 
-Proyek ini digunakan untuk pretest proses seleksi di PT DAYA REKADIGITAL INDONESIA
+Proyek ini digunakan untuk pretest proses seleksi tim Laravel Developer di PT DAYA REKADIGITAL INDONESIA
 
 Keteerangan : 
 - Tech Stack  : Laravel v10.0
