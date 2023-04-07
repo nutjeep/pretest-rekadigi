@@ -1,4 +1,4 @@
-<h1>Website Company Profile - GAS</h1>
+<h1 align="center">Website Company Profile - GAS</h1>
 
 ## Dokumentasi
 
