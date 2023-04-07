@@ -1,0 +1,58 @@
+:root {
+  --color-back: #ECECEC;
+  --color1: #D8E3E7;
+  --color2: #126E82;
+  --color3: #132C33;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  background-color: var(--color-back);
+}
+
+.container {
+  display: grid;
+  place-items: center;
+  height: 100vh;
+}
+
+.card {
+  padding: 20px;
+  width: 25rem;
+  background-color: var(--color2);
+}
+
+.card h5 {
+  color: var(--color1);
+  font-weight: 600;
+}
+
+.card .login a {
+  text-decoration: none;
+  color: var(--color-warning);
+} 
+
+.card .bi {
+  position: absolute;
+  right: 15px;
+  top: 25%;
+  font-size: 20px;
+  color: var(--color2);
+  cursor: pointer;
+}
+
+.card .checkbox {
+  position: absolute;
+  right: 13px;
+  top: 30%;
+  height: 25px;
+  width: 25px;
+  opacity: 0;
+  cursor: pointer;
+}

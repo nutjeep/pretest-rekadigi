@@ -3,7 +3,7 @@
 @section('content')
 <div class="section section-1" id="feature">
   <div class="section-title">
-    <h2 class="text-center">Populer Fitur</h2>
+    <h2 class="text-center">Fitur Populer</h2>
     <p class="text-center">Nikmati berbagai fitur menarik yang kami berikan</p>
   </div>
   <div class="section-content">

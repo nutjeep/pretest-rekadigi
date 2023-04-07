@@ -1,0 +1,120 @@
+@extends('backend.main', ['title' => $title])
+
+
+@section('content')
+  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom border-secondary">
+    <h1 class="text-uppercase">{{ $title }}</h1>
+  </div>
+
+  <div class="raw d-flex">
+    <div class="col-lg-7">
+
+      @if(session()->has('add-feature'))
+      <div class="alert alert-success alert-dismissible fade show bg-success text-white border-0" role="alert" data-bs-theme="dark">
+        {{ session('add-feature') }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+      @endif
+      @if(session()->has('update-feature'))
+      <div class="alert alert-warning alert-dismissible fade show bg-warning text-white border-0" role="alert" data-bs-theme="dark">
+        {{ session('update-feature') }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+      @endif
+      @if(session()->has('delete-feature'))
+      <div class="alert alert-danger alert-dismissible fade show bg-danger text-white border-0" role="alert" data-bs-theme="dark">
+        {{ session('delete-feature') }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+      @endif
+      <div class="tab" id="tab-feature">
+        <h4>Fitur</h4>
+        <table class="table table-striped table-sm">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Fitur</th>
+            </tr>
+          </thead>
+          <tbody>
+            @foreach ($features as $feature)                
+            <tr>
+              <td>{{ $loop->iteration }}</td>
+              <td>{{ $feature->feature_title }}</td>
+              <td class="d-flex">
+                <button type="button" class="btn btn-sm btn-warning me-2"  data-bs-toggle="modal" data-bs-target="#editFeature{{ $feature->slug }}">Edit</button>
+                @include('backend.components.modal-edit-feature')
+                <form action="/dashboard/delete/{{ $feature->slug }}" method="post">
+                  @csrf
+                  @method('delete')
+                  <button type="submit" title="Delete" class="btn btn-sm btn-outline-danger" onclick="confirm('Yakin menghapus data {{ $feature->feature_title }} ?')">Hapus</button>
+                </form>
+              </td>
+            </tr>
+            @endforeach
+          </tbody>
+        </table>
+        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addFeature">Tambah Fitur</button>
+      </div>
+
+
+      <div class="tab" id="tab-category">
+        <h4>Kategori Toko</h4>
+        <table class="table table-striped table-sm">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Kategori</th>
+            </tr>
+          </thead>
+          <tbody>
+            @foreach ($categories as $category)                
+            <tr>
+              <td>{{ $loop->iteration }}</td>
+              <td>{{ $category->category_title }}</td>
+              <td class="d-flex">
+                <a title="Edit" class="me-2" href="/pages/edit/category/{{ $category->slug }}">Edit</a>
+                <a title="Edit" class="text-danger" href="/pages/edit/category/delete/{{ $category->slug }}">Hapus</a>
+              </td>
+            </tr>
+            @endforeach
+          </tbody>
+        </table>
+        <button class="btn btn-primary">Tambah Kategori</button>
+      </div>
+
+  </div>
+
+
+    <div class="col-lg-4 offset-lg-1">
+      @if(session()->has('update-link'))
+      <div class="alert alert-warning alert-dismissible fade show bg-warning text-white border-0" role="alert" data-bs-theme="dark">
+        {{ session('update-link') }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+      @endif
+      <div class="tab" id="tab-link">
+        <h4>Links</h4>
+        @foreach ($links as $item)
+          <form action="/dashboard/update_link/{{ $item->id }}" method="post">
+            @csrf
+            @method('put')
+            <div class="mb-3">
+              <label for="instagram" class="form-label">Instagram</label>
+              <input type="text" class="form-control" id="instagram" name="instagram" placeholder="{{ $item->instagram }}">
+            </div>
+            <div class="mb-3">
+              <label for="facebook" class="form-label">Facebook</label>
+              <input type="text" class="form-control" id="facebook" name="facebook" placeholder="{{ $item->facebook }}">
+            </div>
+            <div class="mb-3">
+              <label for="google_play" class="form-label">Google Play</label>
+              <input type="text" class="form-control" id="google_play" name="google_play" placeholder="{{ $item->google_play }}">
+            </div>
+            <button type="submit" class="btn btn-warning">Update Link</button>           
+          </form> 
+        @endforeach
+      </div>
+    </div>
+  </div>
+@endsection
