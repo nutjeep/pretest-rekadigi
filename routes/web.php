@@ -25,7 +25,13 @@ Route::controller(AuthController::class)->group(function(){
 Route::controller(DashboardController::class)->group(function(){
     Route::get('/dashboard', 'index');
 
-    Route::post('/dashboard/add/feature', 'addFeature');
+    Route::get('/dashboard/category/add', 'addCategory');
+    Route::post('/dashboard/category/store', 'storeCategory');
+    Route::get('/dashboard/category/edit/{category:slug}', 'editCategory');
+    Route::put('/dashboard/category/update/{category:slug}', 'updateCategory');
+    Route::delete('/dashboard/category/delete/{category:id}', 'deleteCategory');
+
+    Route::post('/dashboard/add/feature', 'storeFeature');
     Route::put('/dashboard/update/feature/{feature:slug}', 'updateFeature');
     Route::delete('/dashboard/delete/{feature:slug}', 'deleteFeature');
 

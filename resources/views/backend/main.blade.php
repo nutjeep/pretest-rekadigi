@@ -14,8 +14,8 @@
 
     <!-- include summernote css/js -->
     <script type="text/javascript" src="//code.jquery.com/jquery-3.6.0.min.js"></script>
-    {{-- <link rel="stylesheet" href="{{ asset('summernote/summernote-lite.css') }}">
-    <script src="{{ asset('summernote/summernote-lite.js') }}"></script> --}}
+    <link rel="stylesheet" href="{{ asset('summernote/summernote-lite.css') }}">
+    <script src="{{ asset('summernote/summernote-lite.js') }}"></script>
 
     <style>
       .note-editor .dropdown-toggle::after {
@@ -25,9 +25,7 @@
       .note-editor .note-dropdown-menu, .note-editor .note-modal-footer {
         box-sizing: content-box;
       }
-
     </style>
-
 
     <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
   </head>
@@ -44,10 +42,6 @@
         
       </div>
     </div>
-
-    @include('backend.components.modal-add-feature')
-    @include('backend.components.modal-edit-feature')
-
     
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
@@ -57,14 +51,13 @@
     <!-- Summernote -->
     <script>
       $(document).ready(function() {
-        $('.content .tab #summernote').summernote({
+        $('.tab #summernote').summernote({
           tabsize: 2,
-          height: 500,
+          height: 400,
           toolbar: [
             ['style', ['bold', 'italic', 'underline']],
             ['para', ['ul', 'ol', 'paragraph']],
             ['height', ['height']],
-            ['insert', ['link', 'picture']],
             ['table', ['table']],
             ['view', ['codeview']]
           ]

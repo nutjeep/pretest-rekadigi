@@ -6,7 +6,7 @@
         <h1 class="modal-title fs-5" id="editFeature{{ $feature->slug }}Label">Edit Fitur</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <form action="/dashboard/update/feature/{{ $feature->slug }}" method="post">
+      <form action="/dashboard/update/feature/{{ $feature->slug }}" method="post" enctype="multipart/form-data">
         @csrf
         @method('put')
         <div class="modal-body">

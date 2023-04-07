@@ -58,6 +58,24 @@
       </div>
 
 
+      @if(session()->has('add-category'))
+      <div class="alert alert-success alert-dismissible fade show bg-success text-white border-0" role="alert" data-bs-theme="dark">
+        {{ session('add-category') }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+      @endif
+      @if(session()->has('update-category'))
+      <div class="alert alert-warning alert-dismissible fade show bg-warning text-white border-0" role="alert" data-bs-theme="dark">
+        {{ session('update-category') }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+      @endif
+      @if(session()->has('delete-category'))
+      <div class="alert alert-danger alert-dismissible fade show bg-danger text-white border-0" role="alert" data-bs-theme="dark">
+        {{ session('delete-category') }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+      @endif
       <div class="tab" id="tab-category">
         <h4>Kategori Toko</h4>
         <table class="table table-striped table-sm">
@@ -73,17 +91,20 @@
               <td>{{ $loop->iteration }}</td>
               <td>{{ $category->category_title }}</td>
               <td class="d-flex">
-                <a title="Edit" class="me-2" href="/pages/edit/category/{{ $category->slug }}">Edit</a>
-                <a title="Edit" class="text-danger" href="/pages/edit/category/delete/{{ $category->slug }}">Hapus</a>
+                <a title="Edit" class="btn btn-warning btn-sm me-2" href="/dashboard/category/edit/{{ $category->slug }}">Edit</a>
+                <form action="/dashboard/category/delete/{{ $category->id }}" method="post">
+                  @csrf
+                  @method('delete')
+                  <button title="Delete" class="btn btn-outline-danger btn-sm" onclick="confirm('Yakin menghapus data ?')">Hapus</button>
+                </form>
               </td>
             </tr>
             @endforeach
           </tbody>
         </table>
-        <button class="btn btn-primary">Tambah Kategori</button>
+        <a href="/dashboard/category/add" class="btn btn-primary">Tambah Kategori</a href="">
       </div>
-
-  </div>
+    </div>
 
 
     <div class="col-lg-4 offset-lg-1">
@@ -117,4 +138,7 @@
       </div>
     </div>
   </div>
+
+  @include('backend.components.modal-add-feature')
+  @include('backend.components.modal-edit-feature')
 @endsection

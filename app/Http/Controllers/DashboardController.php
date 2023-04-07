@@ -57,6 +57,58 @@ class DashboardController extends Controller
         return redirect('/dashboard')->with('delete-feature', $feature->feature_title.' telah dihapus');
     }
 
+    public function addCategory ()
+    {
+        return view('backend.categories.add', [
+            'title'     => 'Tambah Kategori',
+            'feature'   => Feature::all(),
+            'category'  => Category::all()
+        ]);
+    }
+
+    public function storeCategory (Request $request)
+    {
+        $validation = $request->validate([
+            'category_title'    => 'required',
+            'slug'              => 'required',
+            'thumbnail'         => '',
+            'description'       => 'required'
+        ]);
+
+        Category::create($validation);
+
+        return redirect('/dashboard')->with('add-category', 'Kategory berhasil ditambah!');
+    }
+
+    public function editCategory (Category $category)
+    {
+        return view('backend.categories.edit', [
+            'title'     => 'Edit Kategori',
+            'category'  => $category
+        ]);
+    }
+
+    public function updateCategory (Request $request, Category $category)
+    {
+        $validation = $request->validate([
+            'category_title'    => 'required',
+            'slug'              => 'required',
+            'thumbnail'         => '',
+            'description'       => 'required'
+        ]);
+
+        Category::where('id', $category->id)->update($validation);
+
+        return redirect('/dashboard')->with('update-category', 'Kategory '.$request->category_title.' berhasil ditambah!');
+    }
+
+    public function deleteCategory (Category $category)
+    {
+        $category->destroy($category->id);
+
+        return redirect('/dashboard')->with('delete-category', $category->category_title.' telah dihapus');
+    }
+
     public function updateLink (Request $request, Link $link)
     {
         $validation = $request->validate([
