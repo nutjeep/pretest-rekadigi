@@ -200,12 +200,18 @@ body .section {
 .section-6 .section-content .raw {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .section-6 .section-content
 .raw .col-lg-6 {
   display: flex;
   padding: 30px;
+}
+
+.section-6 .section-content .column {
+  width: 45%;
+  margin: 20px;
 }
 
 .section-6 .section-content
@@ -247,6 +253,11 @@ body .section {
 
   .section-4 .raw:nth-child(1) {
     margin-bottom: 50px;
+  }
+
+  .section-6 .section-content .column {
+    width: 90%;
+    margin: 20px;
   }
 
   .section-6 .section-content

@@ -7,46 +7,16 @@
     <p class="text-center">Nikmati berbagai fitur menarik yang kami berikan</p>
   </div>
   <div class="section-content">
-    <div class="card">
-      <div class="card-body">
-        <div class="image bg-warning"><img src="img/kasir.png" alt="Mesin kasir"></div>
+    @foreach ($features as $feature)
+      <div class="card">
+        <div class="card-body">
+          <div class="image bg-warning"><img src="{{ asset('storage/' . $feature->image) }}" alt="{{ $feature->feature_title }}"></div>
+        </div>
+        <div class="card-footer">
+          <h3>{{ $feature->feature_title }}</h3>
+        </div>
       </div>
-      <div class="card-footer">
-        <h3>Mesin kasir</h3>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-body">
-        <div class="image bg-warning"><img src="img/barcode.png" alt="Scan Barcode"></div>
-      </div>
-      <div class="card-footer">
-        <h3>Scan Barcode</h3>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-body">
-        <div class="image bg-warning"><img src="img/kurir.png" alt="Daftar Kurir"></div>
-      </div>
-      <div class="card-footer">
-        <h3>Daftar Kurir</h3>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-body">
-        <div class="image bg-warning"><img src="img/opname.png" alt="Stock Opname"></div>
-      </div>
-      <div class="card-footer">
-        <h3>Stock Opname</h3>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-body">
-        <div class="image bg-warning"><img src="img/thermal.png" alt="Print Thermal"></div>
-      </div>
-      <div class="card-footer">
-        <h3>Print Thermal</h3>
-      </div>
-    </div>
+    @endforeach
   </div>
 </div>
 
@@ -56,42 +26,17 @@
     <p class="text-center">Apapun jenis tokomu dapat bergabung bersama gas</p>
   </div>
   <div class="section-content">
+    @foreach ($categories as $category)
     <div class="card">
       <div class="card-body">
-        <div class="image"><img class="img-fluid" src="img/section2-kelontong.jpg" alt=""></div>
+        <div class="image"><img class="img-fluid" src="{{ asset('storage/' . $category->image) }}" alt=""></div>
       </div>
       <div class="card-footer">
-        <h3><a href="">Toko Kelontong</a></h3>
-        <p class="text-truncate"><a href="">Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus, cum.</a></p>
+        <h3><a href="/category/{{ $category->slug }}">{{ $category->category_title }}</a></h3>
+        <p class="text-truncate"><a href="/category/{{ $category->slug }}">{!! $category->description !!}</a></p>
       </div>
     </div>
-    <div class="card">
-      <div class="card-body">
-        <div class="image"><img class="img-fluid" src="img/section2-bangunan.jpg" alt=""></div>
-      </div>
-      <div class="card-footer">
-        <h3><a href="">Toko Bangunan</a></h3>
-        <p class="text-truncate"><a href="">Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus, cum.</a></p>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-body">
-        <div class="image"><img class="img-fluid" src="img/section2-pakaian.jpg" alt=""></div>
-      </div>
-      <div class="card-footer">
-        <h3><a href="">Toko Pakaian</a></h3>
-        <p class="text-truncate"><a href="">Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus, cum.</a></p>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-body">
-        <div class="image"><img class="img-fluid" src="img/section2-warung.jpg" alt=""></div>
-      </div>
-      <div class="card-footer">
-        <h3><a href="">Warung Makanan</a></h3>
-        <p class="text-truncate"><a href="">Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus, cum.</a></p>
-      </div>
-    </div>
+    @endforeach
   </div>
 </div>
 
@@ -161,56 +106,20 @@
   </div>  
   <div class="section-content">
     <div class="raw">
-      <div class="col-lg-6 col-md-12 col-sm-12">
+      @foreach ($carriers as $carrier)
+      <div class="column">
         <div class="image">
-          <img class="img-fluid" src="img/section6-image1.png" alt="">
+          <img class="img-fluid" src="{{ asset('storage/' . $carrier->image) }}" alt="">
         </div>
         <div class="text">
           <div class="title">
-            <h3>Marketing Communication</h3>
-            <p>Ayo nikmati beragam fitur yang dapat memberikan kemudahan untuk tokomu, dan mulai mengembangkan bisnis toko online bersama kami.</p>
-            <a href="" class="btn btn-warning">Baca selengkapnya</a>
+            <h3>{{ $carrier->carrier_title }}</h3>
+            <p class="text-truncate">{!! $carrier->description !!}</p>
+            <a href="/carrier/{{ $carrier->slug }}" class="btn btn-warning">Baca selengkapnya</a>
           </div>
         </div>
       </div>
-      <div class="col-lg-6 col-md-12 col-sm-12">
-        <div class="image">
-          <img class="img-fluid" src="img/section6-image2.png" alt="">
-        </div>
-        <div class="text">
-          <div class="title">
-            <h3>Marketing Communication</h3>
-            <p>Ayo nikmati beragam fitur yang dapat memberikan kemudahan untuk tokomu, dan mulai mengembangkan bisnis toko online bersama kami.</p>
-            <a href="" class="btn btn-warning">Baca selengkapnya</a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="raw">
-      <div class="col-lg-6 col-md-12 col-sm-12">
-        <div class="image">
-          <img class="img-fluid" src="img/section6-image3.png" alt="">
-        </div>
-        <div class="text">
-          <div class="title">
-            <h3>Marketing Communication</h3>
-            <p>Ayo nikmati beragam fitur yang dapat memberikan kemudahan untuk tokomu, dan mulai mengembangkan bisnis toko online bersama kami.</p>
-            <a href="" class="btn btn-warning">Baca selengkapnya</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-6 col-md-12 col-sm-12">
-        <div class="image">
-          <img class="img-fluid" src="img/section6-image4.png" alt="">
-        </div>
-        <div class="text">
-          <div class="title">
-            <h3>Marketing Communication</h3>
-            <p>Ayo nikmati beragam fitur yang dapat memberikan kemudahan untuk tokomu, dan mulai mengembangkan bisnis toko online bersama kami.</p>
-            <a href="" class="btn btn-warning">Baca selengkapnya</a>
-          </div>
-        </div>
-      </div>
+      @endforeach
     </div>
   </div>   
 </div>

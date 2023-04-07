@@ -14,7 +14,8 @@
             <label for="addTitle{{ $feature->id }}" class="form-label">Nama Fitur</label>
             <input type="text" class="form-control" id="addTitle{{ $feature->id }}" name="feature_title" value="{{ $feature->feature_title }}">
           </div>
-          <input type="text" class="form-control" id="slug{{ $feature->id }}" name="slug">
+          <input type="hidden" class="form-control" name="oldImage" value="{{ $feature->thumbnail }}">
+          <input type="hidden" class="form-control" id="slug{{ $feature->id }}" name="slug" value="{{ $feature->slug }}">
           <div class="mb-3">
             <label for="thumbnail" class="form-label">Thumbnail</label>
             <input type="file" class="form-control" id="thumbnail" name="thumbnail">

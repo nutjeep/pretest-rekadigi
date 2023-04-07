@@ -4,12 +4,13 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-use App\Models\Carrier;
 use App\Models\Link;
+use App\Models\User;
+use App\Models\Carrier;
 use App\Models\Feature;
+use App\Models\Privacy;
 use App\Models\Category;
 use App\Models\KritikSaran;
-use App\Models\Privacy;
 use App\Models\TermsCondition;
 use Illuminate\Database\Seeder;
 
@@ -20,33 +21,40 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+
+        User::create([
+            'name'  => 'admin',
+            'email'     => 'admin@gmail.com',
+            'password'  => bcrypt('admin123')
+        ]);
+
         /* ========== CATEGORY ========== */
         Category::create([
             'category_title'    => 'Toko Kelontong',
             'slug'              => 'toko-kelontong',
             'thumbnail'         => '',
-            'description'       => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium quibusdam nesciunt iste exercitationem eveniet quod voluptates delectus magnam deserunt optio!'
+            'description'       => ''
         ]);
 
         Category::create([
             'category_title'    => 'Toko bangunan',
             'slug'              => 'toko-bangunan',
             'thumbnail'         => '',
-            'description'       => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium quibusdam nesciunt iste exercitationem eveniet quod voluptates delectus magnam deserunt optio!'
+            'description'       => ''
         ]);
 
         Category::create([
             'category_title'    => 'Toko Pakaian',
             'slug'              => 'toko-pakaian',
             'thumbnail'         => '',
-            'description'       => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium quibusdam nesciunt iste exercitationem eveniet quod voluptates delectus magnam deserunt optio!'
+            'description'       => ''
         ]);
 
         Category::create([
             'category_title'    => 'Warung Makanan',
             'slug'              => 'warung-makanan',
             'thumbnail'         => '',
-            'description'       => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium quibusdam nesciunt iste exercitationem eveniet quod voluptates delectus magnam deserunt optio!'
+            'description'       => ''
         ]);
 
 
@@ -87,21 +95,21 @@ class DatabaseSeeder extends Seeder
             'carrier_title' => 'Marketing Comunication',
             'slug'          => 'marketing-communication',
             'thumbnail'     => '',
-            'description'   => 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cum, illo. Aperiam incidunt hic ad ipsam ratione beatae enim quam laborum?'
+            'description'   => ''
         ]);
 
         Carrier::create([
             'carrier_title' => 'Customer Service',
             'slug'          => 'customer-service',
             'thumbnail'     => '',
-            'description'   => 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cum, illo. Aperiam incidunt hic ad ipsam ratione beatae enim quam laborum?'
+            'description'   => ''
         ]);
 
         Carrier::create([
             'carrier_title' => 'Content Writer',
             'slug'          => 'content-writer',
             'thumbnail'     => '',
-            'description'   => 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cum, illo. Aperiam incidunt hic ad ipsam ratione beatae enim quam laborum?'
+            'description'   => ''
         ]);
 
 

@@ -17,15 +17,13 @@
           Pages
         </a>
       </li>
-       
-       
-       
+
       <li class="nav-item">
         <form action="/logout" method="post">
           @csrf
-          <a class="nav-link btn text-start text-danger" type="submit">
+          <button class="nav-link btn text-start text-danger" type="submit">
             Logout
-          </a>
+          </button>
         </form>
       </li>
     </ul>

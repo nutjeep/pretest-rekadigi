@@ -9,6 +9,10 @@ use App\Http\Controllers\RegistrationController;
 
 Route::controller(HomepageController::class)->group(function(){
     Route::get('/', 'index')->name('homepage');
+
+    Route::get('/feature/{feature:slug}', 'feature');
+    Route::get('/category/{category:slug}', 'category');
+    Route::get('/carrier/{carrier:slug}', 'carrier');
 });
 
 Route::controller(RegistrationController::class)->group(function(){
@@ -22,34 +26,36 @@ Route::controller(AuthController::class)->group(function(){
     Route::post('/logout', 'logout')->name('logout');
 });
 
-Route::controller(DashboardController::class)->group(function(){
-    Route::get('/dashboard', 'index');
+Route::middleware('auth')->group(function(){
+    Route::controller(DashboardController::class)->group(function(){
+        Route::get('/dashboard', 'index');
 
-    Route::post('/dashboard/add/feature', 'storeFeature');
-    Route::put('/dashboard/update/feature/{feature:slug}', 'updateFeature');
-    Route::delete('/dashboard/delete/{feature:slug}', 'deleteFeature');
+        Route::post('/dashboard/add/feature', 'storeFeature');
+        Route::put('/dashboard/update/feature/{feature:slug}', 'updateFeature');
+        Route::delete('/dashboard/delete/{feature:slug}', 'deleteFeature');
 
-    Route::get('/dashboard/category/add', 'addCategory');
-    Route::post('/dashboard/category/store', 'storeCategory');
-    Route::get('/dashboard/category/edit/{category:slug}', 'editCategory');
-    Route::put('/dashboard/category/update/{category:slug}', 'updateCategory');
-    Route::delete('/dashboard/category/delete/{category:id}', 'deleteCategory');
+        Route::get('/dashboard/category/add', 'addCategory');
+        Route::post('/dashboard/category/store', 'storeCategory');
+        Route::get('/dashboard/category/edit/{category:slug}', 'editCategory');
+        Route::put('/dashboard/category/update/{category:slug}', 'updateCategory');
+        Route::delete('/dashboard/category/delete/{category:id}', 'deleteCategory');
 
-    Route::get('/dashboard/carrier/add', 'addCarrier');
-    Route::post('/dashboard/carrier/store', 'storeCarrier');
-    Route::get('/dashboard/carrier/edit/{carrier:slug}', 'editCarrier');
-    Route::put('/dashboard/carrier/update/{carrier:slug}', 'updateCarrier');
-    Route::delete('/dashboard/carrier/delete/{carrier:id}', 'deleteCarrier');
+        Route::get('/dashboard/carrier/add', 'addCarrier');
+        Route::post('/dashboard/carrier/store', 'storeCarrier');
+        Route::get('/dashboard/carrier/edit/{carrier:slug}', 'editCarrier');
+        Route::put('/dashboard/carrier/update/{carrier:slug}', 'updateCarrier');
+        Route::delete('/dashboard/carrier/delete/{carrier:id}', 'deleteCarrier');
 
-    Route::put('/dashboard/link/update/{link:id}', 'updateLink');
-});
+        Route::put('/dashboard/link/update/{link:id}', 'updateLink');
+    });
 
-Route::controller(PageController::class)->group(function(){
-    Route::get('/pages', 'index');
+    Route::controller(PageController::class)->group(function(){
+        Route::get('/pages', 'index');
 
-    Route::get('/pages/terms/edit/{terms:id}', 'getTerms');
-    Route::get('/pages/privacy/edit/{privacy:id}', 'getPrivacy');
+        Route::get('/pages/terms/edit/{terms:id}', 'getTerms');
+        Route::get('/pages/privacy/edit/{privacy:id}', 'getPrivacy');
 
-    Route::put('/pages/terms/update/{terms:id}', 'updateTerms');
-    Route::put('/pages/privacy/update/{privacy:id}', 'updatePrivacy');
+        Route::put('/pages/terms/update/{terms:id}', 'updateTerms');
+        Route::put('/pages/privacy/update/{privacy:id}', 'updatePrivacy');
+    });
 });

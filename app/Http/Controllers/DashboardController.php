@@ -8,10 +8,11 @@ use App\Models\Feature;
 use App\Models\Category;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class DashboardController extends Controller
 {
-    public function index ()
+    public function index()
     {
         return view('backend.dashboard', [
             'title'             => 'Dashboard',
@@ -22,28 +23,34 @@ class DashboardController extends Controller
         ]);
     }
 
-    public function addCategory ()
+
+    /* ================== CATEGORY ==================*/
+    public function addCategory()
     {
         return view('backend.categories.add', [
-            'title'     => 'Tambah Kategori',
+            'title'     => 'Tambah Kategori Toko',
         ]);
     }
 
-    public function storeCategory (Request $request)
+    public function storeCategory(Request $request)
     {
         $validation = $request->validate([
             'category_title'    => 'required',
             'slug'              => 'required',
-            'thumbnail'         => '',
+            'thumbnail'         => 'file',
             'description'       => 'required'
         ]);
 
+        if ($request->hasFile('thumbnail')) {
+            $validation['thumbnail'] = $request->file('thumbnail')->store('category-images');
+        }
+
         Category::create($validation);
 
-        return redirect('/dashboard')->with('add-category', 'Kategory berhasil ditambah!');
+        return redirect('/dashboard')->with('add-category', 'Kategory toko berhasil ditambah!');
     }
 
-    public function editCategory (Category $category)
+    public function editCategory(Category $category)
     {
         return view('backend.categories.edit', [
             'title'     => 'Edit Kategori',
@@ -51,49 +58,63 @@ class DashboardController extends Controller
         ]);
     }
 
-    public function updateCategory (Request $request, Category $category)
+    public function updateCategory(Request $request, Category $category)
     {
         $validation = $request->validate([
             'category_title'    => 'required',
             'slug'              => 'required',
-            'thumbnail'         => '',
+            'thumbnail'         => 'file',
             'description'       => 'required'
         ]);
 
+        if ($request->hasFile('thumbnail')) {
+            $validation['thumbnail'] = $request->file('thumbnail')->store('category-images');
+        }
+
         Category::where('id', $category->id)->update($validation);
 
-        return redirect('/dashboard')->with('update-category', 'Kategory '.$request->category_title.' berhasil ditambah!');
+        return redirect('/dashboard')->with('update-category', 'Kategory toko ' . $request->category_title . ' berhasil ditambah!');
     }
 
-    public function deleteCategory (Category $category)
+    public function deleteCategory(Category $category)
     {
+        if ($category->thumbnail) {
+            Storage::delete($category->thumbnail);
+        }
+
         $category->destroy($category->id);
 
-        return redirect('/dashboard')->with('delete-category', $category->category_title.' telah dihapus');
+        return redirect('/dashboard')->with('delete-category', $category->category_title . ' telah dihapus');
     }
 
-    public function addCarrier ()
+
+    /* ================== CARIER ==================*/
+    public function addCarrier()
     {
         return view('backend.carrier.add', [
             'title'     => 'Tambah Karir',
         ]);
     }
 
-    public function storeCarrier (Request $request)
+    public function storeCarrier(Request $request)
     {
         $validation = $request->validate([
             'carrier_title'     => 'required',
             'slug'              => 'required',
-            'thumbnail'         => '',
+            'thumbnail'         => 'file|image|max:500',
             'description'       => 'required'
         ]);
+
+        if ($request->hasFile('thumbnail')) {
+            $validation['thumbnail'] = $request->file('thumbnail')->store('carrier-images');
+        }
 
         Carrier::create($validation);
 
         return redirect('/dashboard')->with('add-carrier', 'Karir berhasil ditambah!');
     }
 
-    public function editCarrier (Carrier $carrier)
+    public function editCarrier(Carrier $carrier)
     {
         return view('backend.carrier.edit', [
             'title'     => 'Edit Karir',
@@ -101,63 +122,85 @@ class DashboardController extends Controller
         ]);
     }
 
-    public function updateCarrier (Request $request, Category $carrier)
+    public function updateCarrier(Request $request, Category $carrier)
     {
         $validation = $request->validate([
             'carrier_title'     => 'required',
             'slug'              => 'required',
-            'thumbnail'         => '',
+            'thumbnail'         => 'file|image|max:500',
             'description'       => 'required'
         ]);
 
+        if ($request->hasFile('thumbnail')) {
+            $validation['thumbnail'] = $request->file('thumbnail')->store('carrier-images');
+        }
+
         Carrier::where('id', $carrier->id)->update($validation);
 
-        return redirect('/dashboard')->with('update-carrier', 'Karir '.$request->carrier_title.'berhasil diubah');
+        return redirect('/dashboard')->with('update-carrier', 'Karir ' . $request->carrier_title . 'berhasil diubah');
     }
 
-    public function deleteCarrier (Carrier $carrier)
+    public function deleteCarrier(Carrier $carrier)
     {
+        if($carrier->thumbnail) {
+            Storage::delete($carrier->thumbnail);
+        }
+
         $carrier->destroy($carrier->id);
 
-        return redirect('/dashboard')->with('delete-carrier', $carrier->carrier_title.' telah dihapus');
+        return redirect('/dashboard')->with('delete-carrier', $carrier->carrier_title . ' telah dihapus');
     }
 
-    public function addFeature (Request $request)
+
+    /* ================== FEATURE ==================*/
+    public function storeFeature(Request $request)
     {
         $validation = $request->validate([
             'feature_title' => 'required',
-            'slug'          => 'required',
-            'thumbnail'     => ''
-            // 'thumbnail'     => 'required|file|image|max:300'
+            'slug'          => '',
+            'thumbnail'     => 'file|image|max:500'
         ]);
+
+        if ($request->hasFile('thumbnail')) {
+            $validation['thumbnail'] = $request->file('thumbnail')->store('feature-images');
+        }
 
         Feature::create($validation);
 
-        return redirect('/dashboard')->with('add-feature', 'Fitur '.$request->feature_title.' telah ditambah');
+        return redirect('/dashboard')->with('add-feature', 'Fitur ' . $request->feature_title . ' telah ditambah');
     }
 
-    public function updateFeature (Request $request, Feature $feature)
+    public function updateFeature(Request $request, Feature $feature)
     {
         $validation = $request->validate([
             'feature_title' => 'required',
-            'slug'          => 'required',
-            'thumbnail'     => ''
-            // 'thumbnail'     => 'required|file|image|max:300'
+            'slug'          => '',
+            'thumbnail'     => 'file|image|max:500'
         ]);
+
+        if ($request->hasFile('thumbnail')) {
+            $validation['thumbnail'] = $request->file('thumbnail')->store('feature-images');
+        }
 
         Feature::where('id', $feature->id)->update($validation);
 
-        return redirect('/dashboard')->with('update-feature', 'Fitur '.$request->feature_title.' telah diubah');
+        return redirect('/dashboard')->with('update-feature', 'Fitur ' . $request->feature_title . ' telah diubah');
     }
 
-    public function deleteFeature (Feature $feature)
+    public function deleteFeature(Feature $feature)
     {
+        if($feature->thumbnail) {
+            Storage::delete($feature->thumbnail);
+        }
+
         $feature->destroy($feature->id);
 
-        return redirect('/dashboard')->with('delete-feature', $feature->feature_title.' telah dihapus');
+        return redirect('/dashboard')->with('delete-feature', $feature->feature_title . ' telah dihapus');
     }
 
-    public function updateLink (Request $request, Link $link)
+
+    /* ================== LINKS ==================*/
+    public function updateLink(Request $request, Link $link)
     {
         $validation = $request->validate([
             'instagram'     => 'required',

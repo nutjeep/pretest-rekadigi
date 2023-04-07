@@ -19,7 +19,7 @@
             <label for="category_title" class="form-label">Nama Kategori</label>
             <input value="{{ old('category_title') }}" type="text" class="form-control" id="category_title" name="category_title">
           </div>
-          <input type="text" class="form-control" id="category_slug" name="slug">
+          <input type="hidden" class="form-control" id="category_slug" name="slug">
           <div class="mb-3">
             <label for="thumbnail" class="form-label">Thumbnail</label>
             <input type="file" class="form-control" id="thumbnail" name="thumbnail">

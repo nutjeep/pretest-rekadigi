@@ -12,7 +12,7 @@
               <label for="feature_title" class="form-label">Nama Fitur</label>
               <input type="text" class="form-control" id="feature_title" name="feature_title">
             </div>
-            <input type="text" class="form-control" id="feature_slug" name="slug">
+            <input type="hidden" class="form-control" id="feature_slug" name="slug">
             <div class="mb-3">
               <label for="thumbnail" class="form-label">Thumbnail</label>
               <input type="file" class="form-control" id="thumbnail" name="thumbnail">

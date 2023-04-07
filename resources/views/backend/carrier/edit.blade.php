@@ -10,8 +10,8 @@
     <div class="col-lg-8">
       <div class="tab">
         <form action="/dashboard/carrier/update/{{ $carrier->slug }}" method="post" enctype="multipart/form-data">
-          @csrf
           @method('put')
+          @csrf
           <div class="mb-3">
             @error('carrier_title')
             <div class="invalid-feedback">
@@ -21,7 +21,9 @@
             <label for="carrier_title" class="form-label">Nama Karir</label>
             <input value="{{ $carrier->carrier_title, old('carrier_title') }}" type="text" class="form-control" id="carrier_title" name="carrier_title">
           </div>
-          <input type="hidden" class="form-control" id="carrier_slug" name="slug">
+          <input type="hidden" class="form-control" id="category_thumbnail" value="{{ $carrier->thumbnail }}" name="
+          oldImage">
+          <input type="hidden" class="form-control" id="carrier_slug" name="slug" value="{{ $carrier->slug }}">
           <div class="mb-3">
             <label for="thumbnail" class="form-label">Thumbnail</label>
             <input type="file" class="form-control" id="thumbnail" name="thumbnail">
