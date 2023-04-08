@@ -1,10 +1,6 @@
 <h1 align="center">Website Company Profile - GAS</h1>
 
-## Dokumentasi
-
-Proyek ini digunakan untuk pretest proses seleksi tim Laravel Developer di PT DAYA REKADIGITAL INDONESIA
-
-Keterangan : 
+## Keterangan : 
 - Tech Stack  : Laravel v10.0
 - PHP         : PHP 8.1
 - DB name     : pretest-rekadigi
